@@ -1,0 +1,42 @@
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.2'
+    }
+}
+
+apply plugin: 'com.android.library'
+
+def DEFAULT_COMPILE_SDK= 26
+def DEFAULT_BUILD_TOOLS = "28.0.3"
+def DEFAULT_TARGET_SDK = 26
+
+android {
+    compileSdkVersion rootProject.ext.has('compileSdkVersion') ? rootProject.ext.get('compileSdkVersion') : DEFAULT_COMPILE_SDK
+    buildToolsVersion rootProject.ext.has('buildToolsVersion') ? rootProject.ext.get('buildToolsVersion') : DEFAULT_BUILD_TOOLS
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion rootProject.ext.has('targetSdkVersion') ? rootProject.ext.get('targetSdkVersion') : DEFAULT_TARGET_SDK
+        versionCode 1
+        versionName "1.0"
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    implementation 'com.facebook.react:react-native:+'
+}
+  
