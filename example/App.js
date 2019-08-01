@@ -7,7 +7,14 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Button } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  ActionSheetIOS
+} from "react-native";
 import AndroidDialogPicker from "react-native-android-dialog-picker";
 
 const instructions = Platform.select({
@@ -20,17 +27,31 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   showPicker = () => {
-    AndroidDialogPicker.show(
-      {
-        title: "Test",
-        items: ["item1", "item"],
-        cancelText: "Cancel"
-      },
-      i => {
-        console.log(i);
-        console.log("hello");
-      }
-    );
+    if (Platform.OS === "android") {
+      AndroidDialogPicker.show(
+        {
+          title: "Test",
+          items: ["item1", "item2"],
+          cancelText: "Cancel"
+        },
+        // only called when pressed on one of the items
+        // won't be called if user pressed on cancel
+        buttonIndex => {
+          console.log(buttonIndex);
+        }
+      );
+    } else {
+      ActionSheetIOS.showActionSheetWithOptions(
+        {
+          title: "Test",
+          options: ["item1", "item2", "Cancel"],
+          cancelButtonIndex: 2
+        },
+        buttonIndex => {
+          console.log(buttonIndex);
+        }
+      );
+    }
   };
 
   render() {

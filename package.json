@@ -1,18 +1,23 @@
 {
   "name": "react-native-android-dialog-picker",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Simple custom dialog with multiple list items",
   "main": "index.js",
   "types": "./index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "android",
+    "dialog",
+    "picker",
+    "spinner",
+    "android spinner"
   ],
-  "author": "",
+  "author": "Jan Czizikow <jan.czizikow@gmail.com> (https://www.janczizikow.com/)",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "^0.59.1"
   }
 }
