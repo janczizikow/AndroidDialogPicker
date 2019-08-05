@@ -1,8 +1,8 @@
 declare module "react-native-android-dialog-picker" {
   export interface Options {
-    title: string;
+    title?: string;
     items: string[];
-    cancelText: string;
+    cancelText?: string;
   }
 
   export interface AndroidDialogPicker {
