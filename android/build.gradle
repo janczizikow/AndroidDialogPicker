@@ -12,9 +12,9 @@ buildscript {
 
 apply plugin: 'com.android.library'
 
-def DEFAULT_COMPILE_SDK= 26
+def DEFAULT_COMPILE_SDK= 28
 def DEFAULT_BUILD_TOOLS = "28.0.3"
-def DEFAULT_TARGET_SDK = 26
+def DEFAULT_TARGET_SDK = 28
 
 android {
     compileSdkVersion rootProject.ext.has('compileSdkVersion') ? rootProject.ext.get('compileSdkVersion') : DEFAULT_COMPILE_SDK
