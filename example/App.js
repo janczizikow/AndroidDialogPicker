@@ -30,8 +30,8 @@ export default class App extends Component<Props> {
     if (Platform.OS === "android") {
       AndroidDialogPicker.show(
         {
-          title: "Test",
-          items: ["item1", "item2"],
+          title: "Title",
+          items: ["Item1", "Item2"],
           cancelText: "Cancel"
         },
         // only called when pressed on one of the items
