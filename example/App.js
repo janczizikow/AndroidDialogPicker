@@ -43,8 +43,8 @@ export default class App extends Component<Props> {
     } else {
       ActionSheetIOS.showActionSheetWithOptions(
         {
-          title: "Test",
-          options: ["item1", "item2", "Cancel"],
+          title: "Title",
+          options: ["Item1", "Item2", "Cancel"],
           cancelButtonIndex: 2
         },
         buttonIndex => {

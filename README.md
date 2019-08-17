@@ -51,7 +51,6 @@ import {
   ActionSheetIOS
 } from "react-native";
 import AndroidDialogPicker from "react-native-android-dialog-picker";
-import RNAndroidDialogPicker from 'react-native-android-dialog-picker';
 
 export default class App extends Component {
   showPicker = () => {
@@ -73,8 +72,8 @@ export default class App extends Component {
       // use ActionSheetIOS for iOS
       ActionSheetIOS.showActionSheetWithOptions(
         {
-          title: "Test",
-          options: ["item1", "item2", "Cancel"],
+          title: "Title",
+          options: ["Item1", "Item2", "Cancel"],
           cancelButtonIndex: 2
         },
         buttonIndex => {
@@ -86,7 +85,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}>
+      <View style={{flex: 1}}>
         <Button title="Show Me What You Got" onPress={this.showPicker} />
       </View>
     );
