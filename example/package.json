@@ -1,26 +1,29 @@
 {
-  "name": "Example",
+  "name": "example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "haul start",
-    "test": "jest"
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "postinstall": "node ../scripts/examples_postinstall.js"
   },
   "dependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.10",
+    "react": "16.9.0",
+    "react-native": "0.61.2",
     "react-native-android-dialog-picker": "file:../"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/runtime": "^7.5.5",
-    "@haul-bundler/babel-preset-react-native": "^0.9.0",
-    "@haul-bundler/cli": "^0.9.1",
-    "@haul-bundler/preset-0.59": "^0.9.0",
-    "babel-jest": "^24.8.0",
-    "jest": "^24.8.0",
-    "metro-react-native-babel-preset": "^0.55.0",
-    "react-test-renderer": "16.8.3"
+    "@babel/core": "^7.6.4",
+    "@babel/runtime": "^7.6.3",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.0",
+    "react-test-renderer": "16.9.0"
   },
   "jest": {
     "preset": "react-native"
