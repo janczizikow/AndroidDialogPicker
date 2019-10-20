@@ -1,6 +1,10 @@
 
 # react-native-android-dialog-picker
 
+>
+
+[![NPM](https://img.shields.io/npm/v/react-native-android-dialog-picker.svg?style=flat-square)](https://www.npmjs.com/package/react-native-android-dialog-picker)
+
 A simple custom dialog with multiple list items.
 
 <p align="center">
@@ -12,6 +16,13 @@ A simple custom dialog with multiple list items.
 RN 0.59.1+ has a bug with Picker component not rendered as a modal, even when passing props: https://github.com/facebook/react-native/issues/24055
 I needed to create a simple Dialog with options (without checkboxes / radio boxes) and didn't wanted to wait until the issue with Picker is fixed. This is a temporary quick solution for the problem.
 
+## React Native Compatibility
+
+| `react-native-android-dialog-picker` version | Required React Native Version                                                     |
+| -------------------------------------------- | --------------------------------------------------------------------------------- |
+| `0.1.x`                                      | `>= 0.60` or `>= 0.59` if using [Jetifier](https://github.com/mikehardy/jetifier) |
+| `0.0.x`                                      | `<= 0.59`                                                                         |
+
 ## Getting started
 
 `$ yarn add react-native-android-dialog-picker`
@@ -21,6 +32,8 @@ or
 `$ npm install react-native-android-dialog-picker --save`
 
 ### Mostly automatic installation
+
+Only necessary for React Native <= 0.59
 
 `$ react-native link react-native-android-dialog-picker`
 

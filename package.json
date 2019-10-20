@@ -1,7 +1,7 @@
 {
   "name": "react-native-android-dialog-picker",
   "title": "React Native Android Dialog Picker",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Simple custom dialog with multiple list items for android",
   "main": "index.js",
   "types": "./index.d.ts",
