@@ -1,5 +1,6 @@
 {
   "name": "react-native-android-dialog-picker",
+  "title": "React Native Android Dialog Picker",
   "version": "0.0.2",
   "description": "Simple custom dialog with multiple list items for android",
   "main": "index.js",
@@ -15,17 +16,24 @@
     "spinner",
     "android spinner"
   ],
-  "author": "Jan Czizikow <jan.czizikow@gmail.com> (https://www.janczizikow.com/)",
+  "author": {
+    "name": "Jan Czizikow",
+    "email": "jan.czizikow@gmail.com"
+  },
   "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/janczizikow/AndroidDialogPicker.git"
+    "url": "https://github.com/janczizikow/AndroidDialogPicker.git",
+    "baseUrl": "https://github.com/janczizikow/AndroidDialogPicker"
   },
   "bugs": {
     "url": "https://github.com/janczizikow/AndroidDialogPicker/issues"
   },
   "homepage": "https://github.com/janczizikow/AndroidDialogPicker#readme",
   "peerDependencies": {
-    "react-native": "^0.59.1"
+    "react": "^16.8.6",
+    "react-native": ">=0.60.0 <1.0.x"
   }
 }

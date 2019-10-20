@@ -1,9 +1,10 @@
 
 package com.androiddialogpicker;
 
+import androidx.appcompat.app.AlertDialog;
+
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
