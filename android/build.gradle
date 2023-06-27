@@ -20,7 +20,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 // Matches values in recent template from React Native 0.59 / 0.60
 // https://github.com/facebook/react-native/blob/0.59-stable/template/android/build.gradle#L5-L9
@@ -104,12 +104,12 @@ afterEvaluate { project ->
     }
 
     task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {
-        classifier = 'javadoc'
+        archiveClassifier = 'javadoc'
         from androidJavadoc.destinationDir
     }
 
     task androidSourcesJar(type: Jar) {
-        classifier = 'sources'
+        archiveClassifier = 'sources'
         from android.sourceSets.main.java.srcDirs
         include '**/*.java'
     }
@@ -121,17 +121,15 @@ afterEvaluate { project ->
         }
     }
 
-    artifacts {
-        archives androidSourcesJar
-        archives androidJavadocJar
-    }
-
     task installArchives(type: Upload) {
         configuration = configurations.archives
-        repositories.mavenDeployer {
-            // Deploy to react-native-event-bridge/maven, ready to publish to npm
-            repository url: "file://${projectDir}/../android/maven"
-            configureReactNativePom pom
+        publishing {
+            publications {
+                maven(MavenPublication) {
+                    artifact androidSourcesJar
+                    artifact androidJavadocJar
+                }
+            }
         }
     }
 }
