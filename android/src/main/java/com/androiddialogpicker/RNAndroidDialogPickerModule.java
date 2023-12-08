@@ -2,6 +2,7 @@
 package com.androiddialogpicker;
 
 import androidx.appcompat.app.AlertDialog;
+import com.facebook.react.bridge.UiThreadUtil;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -36,52 +37,57 @@ public class RNAndroidDialogPickerModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void show(final ReadableMap options, final Callback callback) {
-    Activity currentActivity  = getCurrentActivity();
-    this.callback = callback;
-
-    if (currentActivity == null) {
-      return;
-    }
-
-    if (mDialog != null) {
-      mDialog.dismiss();
-    }
-
-    mBuilder = new AlertDialog.Builder(getCurrentActivity());
-
-    if (options.hasKey("title")) {
-      mBuilder.setTitle(options.getString("title"));
-    }
-
-    if (options.hasKey("items")) {
-      List<String> itemsList = new ArrayList<>();
-      final ReadableArray optionItems = options.getArray("items");
-      for (int i = 0; i < optionItems.size(); i++) {
-        final String label = optionItems.getString(i);
-        itemsList.add(label);
-      }
-
-      final String[] itemsArray = itemsList.toArray(new String[0]);
-
-      mBuilder.setItems(itemsArray, new DialogInterface.OnClickListener() {
+    UiThreadUtil.runOnUiThread(new Runnable() {
         @Override
-        public void onClick(DialogInterface dialogInterface, int i) {
-          callback.invoke(i);
-          dialogInterface.dismiss();
-        }
-      });
-    }
+        public void run() {
+          Activity currentActivity  = getCurrentActivity();
 
-    if (options.hasKey("cancelText")) {
-      mBuilder.setNegativeButton(options.getString("cancelText"), new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialogInterface, int i) {
-          dialogInterface.dismiss();
-        }
-      });
-    }
+          if (currentActivity == null) {
+            return;
+          }
 
-    mDialog = mBuilder.create();
-    mDialog.show();
+          if (mDialog != null) {
+            mDialog.dismiss();
+          }
+
+          mBuilder = new AlertDialog.Builder(getCurrentActivity());
+
+          if (options.hasKey("title")) {
+            mBuilder.setTitle(options.getString("title"));
+          }
+
+          if (options.hasKey("items")) {
+            List<String> itemsList = new ArrayList<>();
+            final ReadableArray optionItems = options.getArray("items");
+            for (int i = 0; i < optionItems.size(); i++) {
+              final String label = optionItems.getString(i);
+              itemsList.add(label);
+            }
+
+            final String[] itemsArray = itemsList.toArray(new String[0]);
+
+            mBuilder.setItems(itemsArray, new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialogInterface, int i) {
+                callback.invoke(i);
+                dialogInterface.dismiss();
+              }
+            });
+          }
+
+          if (options.hasKey("cancelText")) {
+            mBuilder.setNegativeButton(options.getString("cancelText"), new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+              }
+            });
+          }
+
+          mDialog = mBuilder.create();
+
+          mDialog.show();
+        }
+    });
   }
 }
